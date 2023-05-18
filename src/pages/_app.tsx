@@ -48,7 +48,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@rahulgs" />
         <meta name="twitter:creator" content="@rahulgs" />
-        <meta name="twitter:title" content="Clarity" />
+        <meta name="twitter:title" content="Constitución Chile [Clarity]" />
         <meta name="twitter:description" content={DESCRIPTION} />
         <meta name="twitter:image" content={OG_IMAGE_URL} />
       </Head>

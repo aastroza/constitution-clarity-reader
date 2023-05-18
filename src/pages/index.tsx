@@ -147,7 +147,7 @@ const Examples = () => {
       }}
     >
       <Text sx={{ fontWeight: "bold", color: "mutedText" }}>
-        Try an example
+        Intenta con estás búsquedas de ejemplo
       </Text>
       <Grid
         sx={{
