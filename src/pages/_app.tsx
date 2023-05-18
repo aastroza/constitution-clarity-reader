@@ -39,7 +39,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <link rel="icon" href="/favicon.png" />
 
         <meta property="og:image" content={OG_IMAGE_URL} />
-        <meta property="og:title" content="Clarity" />
+        <meta property="og:title" content="Constitución Chile [Clarity]" />
         <meta property="og:description" content={DESCRIPTION} />
         <meta property="og:url" content="https://clarity.rahul.gs" />
         <meta property="og:type" content="website" />
