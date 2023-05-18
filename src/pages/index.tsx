@@ -3,8 +3,7 @@ import { useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import { Box, Button, Flex, Grid, Heading, Input, Text } from "theme-ui";
 
-export const DESCRIPTION = `An app for layered, depth-first reading — start with summaries, tap to
-explore details, and gain clarity on complex topics.`;
+export const DESCRIPTION = `Una aplicación para una lectura en capas y en profundidad: comienza con resúmenes, toca para explorar detalles y obtén claridad sobre temas complejos.`;
 
 const Main = () => {
   const router = useRouter();
@@ -81,7 +80,7 @@ const Main = () => {
           >
             <Input
               type="url"
-              placeholder="Try an article URL"
+              placeholder="Intenta con un tema que te interese"
               variant="reader"
               sx={{
                 border: "none",
@@ -121,19 +120,19 @@ const Main = () => {
 const EXAMPLES = [
   {
     url: "http://paulgraham.com/ds.html",
-    title: "Do Things That Don't Scale",
-    site: "Paul Graham",
+    title: "Los derechos del agua",
+    site: "Agua",
   },
   {
     url: "https://en.wikipedia.org/wiki/Domino's",
-    title: "Domino's",
-    site: "Wikipedia",
+    title: "Los límites del Banco Central",
+    site: "Banco Central",
   },
   {
     url: "https://www.vox.com/future-perfect/2023/4/1/23664724/baseball-artificial-intelligence-kyle-schwarber-philadelphia-phillies-moneyball-strikeout-homerun",
     title:
-      "How baseball’s analytics revolution is changing the game — and the players",
-    site: "Vox",
+      "Los poderes del estado",
+    site: "Estado",
   },
 ];
 
