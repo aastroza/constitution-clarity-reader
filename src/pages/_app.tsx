@@ -4,9 +4,6 @@ import { ThemeProvider } from "theme-ui";
 import { tailwind } from "@theme-ui/presets";
 import Head from "next/head";
 import { DESCRIPTION } from ".";
-import Cohere from "cohere-js";
-import posthog from "posthog-js";
-import { useEffect } from "react";
 
 const theme = {
   ...tailwind,
@@ -19,17 +16,10 @@ const theme = {
   },
 };
 
-Cohere.init(process.env.NEXT_PUBLIC_COHERE_API_KEY!);
 const ORIGIN_URL = "https://" + process.env.VERCEL_URL;
 const OG_IMAGE_URL = ORIGIN_URL + "/og.png";
 
 export default function App({ Component, pageProps }: AppProps) {
-  useEffect(() => {
-    posthog.init("phc_7bLoFIeXazoaR7PBrj4m4X2PsH2hvNgOctI6RFrvV1n", {
-      api_host: "https://app.posthog.com",
-    });
-  }, []);
-
   return (
     <>
       <Head>
@@ -43,7 +33,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta property="og:description" content={DESCRIPTION} />
         <meta property="og:url" content="https://clarity.rahul.gs" />
         <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="Clarity" />
+        <meta property="og:site_name" content="Constitución Chile [Clarity]" />
 
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@rahulgs" />
