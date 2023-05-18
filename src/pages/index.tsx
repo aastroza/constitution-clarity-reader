@@ -47,7 +47,7 @@ const Main = () => {
             }}
           />
           <Heading as="h1" sx={{ flex: 1, display: "contents", fontSize: 60 }}>
-            Clarity
+            Constitución Chile [Clarity]
           </Heading>
 
           <Text
@@ -152,7 +152,7 @@ const Examples = () => {
       <Grid
         sx={{
           mt: 3,
-          gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+          gridTemplateColumns: "repeat(3, 1fr)",//"repeat(auto-fit, minmax(200px, 1fr))
           gap: 4,
         }}
       >
