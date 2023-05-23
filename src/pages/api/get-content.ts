@@ -30,8 +30,11 @@ const getArticleFromString = async (query: string): Promise<Article | null> => {
   console.log("query", query);
   const contextResponse = await getContext(query);
   console.log("contextResponse", contextResponse)
+  const dom = new JSDOM(contextResponse);
+  const reader = new Readability(dom.window.document);
+  const article = reader.parse();
   //console.log("contextResponse.context", contextResponse.context)
-  return parseJsDomDocumentFromString(contextResponse.context);
+  return article;
 };
 
 type Data = {
