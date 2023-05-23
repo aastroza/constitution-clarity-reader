@@ -7,7 +7,7 @@ export const DESCRIPTION = `Una aplicación para una lectura en capas y en profu
 
 const Main = () => {
   const router = useRouter();
-  const [formUrl, setFormUrl] = useState("");
+  const [formText, setFormText] = useState("");
   return (
     <>
       <Flex
@@ -64,8 +64,8 @@ const Main = () => {
           <Box
             onSubmit={(e) => {
               e.preventDefault();
-              if (formUrl) {
-                router.push(`/read/${formUrl}`);
+              if (formText) {
+                router.push(`/read/${formText}`);
               }
             }}
             as="form"
@@ -79,7 +79,7 @@ const Main = () => {
             }}
           >
             <Input
-              type="url"
+              type="text"
               placeholder="Intenta con un tema que te interese"
               variant="reader"
               sx={{
@@ -90,9 +90,9 @@ const Main = () => {
                 borderColor: "line",
                 fontFamily: "Alice",
               }}
-              value={formUrl}
+              value={formText}
               onChange={(e) => {
-                setFormUrl(e.target.value);
+                setFormText(e.target.value);
               }}
             />
             <Button
@@ -119,17 +119,17 @@ const Main = () => {
 
 const EXAMPLES = [
   {
-    url: "http://paulgraham.com/ds.html",
+    text: "http://paulgraham.com/ds.html",
     title: "Los derechos del agua",
     site: "Agua",
   },
   {
-    url: "https://en.wikipedia.org/wiki/Domino's",
+    text: "https://en.wikipedia.org/wiki/Domino's",
     title: "Los límites del Banco Central",
     site: "Banco Central",
   },
   {
-    url: "https://www.vox.com/future-perfect/2023/4/1/23664724/baseball-artificial-intelligence-kyle-schwarber-philadelphia-phillies-moneyball-strikeout-homerun",
+    text: "https://www.vox.com/future-perfect/2023/4/1/23664724/baseball-artificial-intelligence-kyle-schwarber-philadelphia-phillies-moneyball-strikeout-homerun",
     title:
       "Los poderes del estado",
     site: "Estado",
@@ -160,9 +160,9 @@ const Examples = () => {
           <Flex
             onClick={() => {
               // TODO: navigate to the URL
-              router.push(`/read/${example.url}`);
+              router.push(`/read/${example.text}`);
             }}
-            key={example.url}
+            key={example.text}
             sx={{
               height: "100%",
               p: 3,
@@ -179,7 +179,7 @@ const Examples = () => {
               justifyContent: "space-between",
             }}
           >
-            <Heading key={example.url} sx={{}}>
+            <Heading key={example.text} sx={{}}>
               {example.title}
             </Heading>
             <Text

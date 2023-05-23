@@ -41,6 +41,7 @@ image = (
         "orjson",
         "scipy",
         "numpy",
+        "pandas",
     )
     .run_function(download_all_models)
 )

@@ -13,7 +13,7 @@ from flufl.lock import Lock
 from nltk.tokenize import sent_tokenize
 from pydantic import BaseModel
 
-from .embed import embed
+from .embed import embed, context
 from .helpers import (
     CACHE_ROOT,
     count_tokens,
@@ -194,6 +194,12 @@ async def get_similarity(similarity: Similarity) -> SimilarityResponse:
             break
 
     return SimilarityResponse(targetIndex=target_index, sentenceIndex=sentence_index)
+
+
+@app.post("/context")
+async def get_context(query: str) -> str:
+    text = context(query)
+    return text
 
 
 @stub.function(

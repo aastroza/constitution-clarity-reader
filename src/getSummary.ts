@@ -164,3 +164,29 @@ export const getSimilarity = (
     return similarity;
   });
 };
+
+const _getContext = (
+  query: string,
+): Promise<{
+  context: string;
+}> => {
+  return fetch(SERVER_ORIGIN + "context", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+
+    body: JSON.stringify({ query }),
+  }).then((response) => response.json());
+};
+
+export const getContext = (
+  query: string
+): Promise<{
+  context: string;
+}> => {
+
+  return _getContext(query).then((context) => {
+    return context;
+  });
+};

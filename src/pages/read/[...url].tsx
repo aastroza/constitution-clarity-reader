@@ -163,14 +163,15 @@ const Reader = () => {
 };
 
 const LOADING_COPY = [
-  "Loading summaries...",
-  "Crunching numbers...",
-  "Creating embeddings...",
-  "Solving the traveling salesman problem...",
-  "Performing a linear regression...",
-  "Photoshopping your face onto a cat...",
-  "Photosynthesizing...",
+  "Cargando resúmenes...",
+  "Calculando números...",
+  "Creando embeddings...",
+  "Resolviendo el problema del vendedor viajero...",
+  "Realizando una regresión lineal...",
+  "Photoshopeando tu cara en un gato...",
+  "Fotosintetizando...",
 ];
+
 
 const LoadingScreen = () => {
   const [loadingCopy, setLoadingCopy] = useState(LOADING_COPY[0]);

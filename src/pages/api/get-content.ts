@@ -1,6 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { Readability } from "@mozilla/readability";
 import { JSDOM } from "jsdom";
+import { getContext } from "@/getSummary";
 
 export type Article = NonNullable<
   ReturnType<typeof Readability.prototype.parse>
@@ -12,9 +13,22 @@ const parseJsDomDocument = (doc: JSDOM): Article | null => {
   return article;
 };
 
+const parseJsDomDocumentFromString = (html: string): Article | null => {
+  const dom = new JSDOM(html);
+  const reader = new Readability(dom.window.document);
+  const article = reader.parse();
+
+  return article;
+};
+
 const getArticleFromUrl = async (url: string): Promise<Article | null> => {
   let jsdom = await JSDOM.fromURL(url);
   return parseJsDomDocument(jsdom);
+};
+
+const getArticleFromString = async (query: string): Promise<Article | null> => {
+  const contextResponse = await getContext(query);
+  return parseJsDomDocumentFromString(contextResponse.context);
 };
 
 type Data = {
