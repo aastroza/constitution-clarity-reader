@@ -165,7 +165,7 @@ export const getSimilarity = (
   });
 };
 
-const getContext = (
+export const getContext = (
   query: string,
 ): Promise<{
   context: string;
