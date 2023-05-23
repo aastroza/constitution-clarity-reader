@@ -170,13 +170,14 @@ const _getContext = (
 ): Promise<{
   context: string;
 }> => {
+  console.log(JSON.stringify({ query }));
   return fetch(SERVER_ORIGIN + "context", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
 
-    body: JSON.stringify(query),
+    body: JSON.stringify({ query }),
   }).then((response) => response.json());
 };
 
