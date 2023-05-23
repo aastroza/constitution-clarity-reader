@@ -164,6 +164,10 @@ class SimilarityResponse(BaseModel):
     sentenceIndex: int
 
 
+class ContextResponse(BaseModel):
+    context: str
+
+
 @app.post("/similarity")
 async def get_similarity(similarity: Similarity) -> SimilarityResponse:
     tokenized_target = [sent_tokenize(target) for target in similarity.target]
@@ -201,9 +205,9 @@ async def get_similarity(similarity: Similarity) -> SimilarityResponse:
 
 
 @app.post("/context")
-async def get_context(payload: Payload = None) -> str:
+async def get_context(payload: Payload = None) -> ContextResponse:
     text = context(payload.query)
-    return text
+    return ContextResponse(context=text)
 
 
 @stub.function(

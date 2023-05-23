@@ -35,7 +35,7 @@ async def summarize_text_uncached(text: str) -> str:
             messages=[
                 {
                     "role": "system",
-                    "content": "You are a helpful assistant that summarizes text. Output one paragraph of text that summarizes the following text:",
+                    "content": "You are a helpful assistant that summarizes text. Output one paragraph of text in spanish that summarizes the following text:",
                 },
                 {
                     "role": "user",

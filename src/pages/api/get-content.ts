@@ -29,7 +29,7 @@ const getArticleFromUrl = async (url: string): Promise<Article | null> => {
 const getArticleFromString = async (query: string): Promise<Article | null> => {
   console.log("query", query);
   const contextResponse = await getContext(query);
-  console.log("contextResponse", contextResponse.context)
+  //console.log("contextResponse", contextResponse.context)
   const dom = new JSDOM(contextResponse.context);
   const reader = new Readability(dom.window.document);
   const article = reader.parse();
