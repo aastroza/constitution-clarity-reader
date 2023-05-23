@@ -119,17 +119,17 @@ const Main = () => {
 
 const EXAMPLES = [
   {
-    text: "http://paulgraham.com/ds.html",
+    text: "Los derechos del agua",
     title: "Los derechos del agua",
     site: "Agua",
   },
   {
-    text: "https://en.wikipedia.org/wiki/Domino's",
+    text: "Los límites del Banco Central",
     title: "Los límites del Banco Central",
     site: "Banco Central",
   },
   {
-    text: "https://www.vox.com/future-perfect/2023/4/1/23664724/baseball-artificial-intelligence-kyle-schwarber-philadelphia-phillies-moneyball-strikeout-homerun",
+    text: "Los poderes del estado",
     title:
       "Los poderes del estado",
     site: "Estado",

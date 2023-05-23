@@ -1,3 +1,11 @@
+# Instructions
+
+'''
+cd backend
+modal serve pkg/main.py
+'''
+
+
 # Clarity
 
 ### [https://clarity.rahul.gs/](https://clarity.rahul.gs/)
