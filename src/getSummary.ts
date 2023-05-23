@@ -165,7 +165,7 @@ export const getSimilarity = (
   });
 };
 
-const _getContext = (
+const getContext = (
   query: string,
 ): Promise<{
   context: string;
@@ -181,13 +181,13 @@ const _getContext = (
   }).then((response) => response.json());
 };
 
-export const getContext = (
-  query: string
-): Promise<{
-  context: string;
-}> => {
+// export const getContext = (
+//   query: string
+// ): Promise<{
+//   context: string;
+// }> => {
 
-  return _getContext(query).then((context) => {
-    return context;
-  });
-};
+//   return _getContext(query).then((context) => {
+//     return context;
+//   });
+// };

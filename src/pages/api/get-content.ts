@@ -29,9 +29,9 @@ const getArticleFromUrl = async (url: string): Promise<Article | null> => {
 const getArticleFromString = async (query: string): Promise<Article | null> => {
   console.log("query", query);
   const contextResponse = await getContext(query);
-  //console.log("contextResponse", contextResponse)
-  console.log("contextResponse.context", contextResponse.context)
-  return parseJsDomDocumentFromString(contextResponse.context);
+  console.log("contextResponse", contextResponse)
+  //console.log("contextResponse.context", contextResponse.context)
+  return parseJsDomDocumentFromString(contextResponse);
 };
 
 type Data = {
