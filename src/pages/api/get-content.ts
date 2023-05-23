@@ -27,6 +27,7 @@ const getArticleFromUrl = async (url: string): Promise<Article | null> => {
 };
 
 const getArticleFromString = async (query: string): Promise<Article | null> => {
+  console.log("query", query);
   const contextResponse = await getContext(query);
   return parseJsDomDocumentFromString(contextResponse.context);
 };
