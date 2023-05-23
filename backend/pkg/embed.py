@@ -63,21 +63,24 @@ def embed(texts: list[str]) -> list[str]:
             with shelve.open(str(EMBED_CACHE_PATH)) as cache:
                 for text, pred in zip(uncached, uncached_preds):
                     results[text] = pred
-                    
+
                     cache[_get_embedding_cache_key(text, EMBEDDING_MODEL_NAME)] = pred
 
     return [results[text] for text in texts]  # type: ignore
 
+
 def context(query: str) -> str:
-    df_gh = pd.read_csv('https://raw.githubusercontent.com/idsudd/discolab/main/data/processed/constitucion_vigente_embeddings.csv')
+    df_gh = pd.read_csv(
+        "https://raw.githubusercontent.com/idsudd/discolab/main/data/processed/constitucion_vigente_embeddings.csv"
+    )
     model = Model()
 
-    preds = df_gh['emb_texto_con_titulo'].apply(lambda x: 
-                            np.fromstring(
-                                x.replace('\n','')
-                                    .replace('[','')
-                                    .replace(']','')
-                                    .replace('  ',' '), sep=' '))
+    preds = df_gh["emb_texto_con_titulo"].apply(
+        lambda x: np.fromstring(
+            x.replace("\n", "").replace("[", "").replace("]", "").replace("  ", " "),
+            sep=" ",
+        )
+    )
 
     target = model.uncached_embed([query])[0]
 
@@ -86,17 +89,29 @@ def context(query: str) -> str:
 
     df_array = []
     for i, row in df_gh.loc[ind].iterrows():
-        df_array.append(df_gh[(df_gh['capitulo'] == row['capitulo'])&(df_gh['articulo'] == row['articulo'])].reset_index(drop=True))
-    
-    df_result = pd.concat(df_array, ignore_index=True)
-    df_result = df_result.drop_duplicates(ignore_index=True).sort_values(by = ['Unnamed: 0'])
-    df_result['texto_concatenado'] = df_result[['capitulo', 'titulo_capitulo','articulo', 'texto']].groupby(['capitulo', 'titulo_capitulo','articulo'])['texto'].transform(lambda x: '\n'.join(x))
-    df_result = df_result[['capitulo', 'titulo_capitulo','articulo', 'texto_concatenado']].drop_duplicates()
+        df_array.append(
+            df_gh[
+                (df_gh["capitulo"] == row["capitulo"])
+                & (df_gh["articulo"] == row["articulo"])
+            ].reset_index(drop=True)
+        )
 
-    str_output = ''
+    df_result = pd.concat(df_array, ignore_index=True)
+    df_result = df_result.drop_duplicates(ignore_index=True).sort_values(
+        by=["Unnamed: 0"]
+    )
+    df_result["texto_concatenado"] = (
+        df_result[["capitulo", "titulo_capitulo", "articulo", "texto"]]
+        .groupby(["capitulo", "titulo_capitulo", "articulo"])["texto"]
+        .transform(lambda x: "\n".join(x))
+    )
+    df_result = df_result[
+        ["capitulo", "titulo_capitulo", "articulo", "texto_concatenado"]
+    ].drop_duplicates()
+
+    str_output = ""
 
     for i, row in df_result.iterrows():
         str_output += f"{row['capitulo']}: {row['titulo_capitulo']}\n{row['articulo']}\n{row['texto_concatenado']}\n\n"
 
     return str_output
-
