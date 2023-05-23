@@ -46,5 +46,5 @@ export default async function handler(
     return;
   }
 
-  res.status(200).json({ article: await getArticleFromUrl(url) });
+  res.status(200).json({ article: await getArticleFromString(url) });
 }
