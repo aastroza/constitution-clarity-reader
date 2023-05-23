@@ -31,7 +31,7 @@ const getArticleFromString = async (query: string): Promise<Article | null> => {
   const contextResponse = await getContext(query);
   console.log("contextResponse", contextResponse)
   //console.log("contextResponse.context", contextResponse.context)
-  return parseJsDomDocumentFromString(contextResponse);
+  return parseJsDomDocumentFromString(contextResponse.context);
 };
 
 type Data = {
