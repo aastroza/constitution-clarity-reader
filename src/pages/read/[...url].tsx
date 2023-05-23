@@ -26,7 +26,7 @@ const Reader = () => {
       return;
     }
 
-    fetch(`/api/get-content?${url ? `url=${encodeURIComponent(url)}` : ""}`, {
+    fetch(`/api/get-content?${url ? `url=${url}` : ""}`, {
       method: "POST",
     })
       .then((res) => res.json() as Promise<{ article: Article }>)
