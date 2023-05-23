@@ -49,6 +49,10 @@ class FlattenedTreeNode(BaseModel):
     children_in_next_level: List[int]
 
 
+class Payload(BaseModel):
+    query: str = ""
+
+
 class SummarizeFlattenedTextResponse(BaseModel):
     flattened_tree: List[List[FlattenedTreeNode]]
 
@@ -197,8 +201,8 @@ async def get_similarity(similarity: Similarity) -> SimilarityResponse:
 
 
 @app.post("/context")
-async def get_context(query: str) -> str:
-    text = context(query)
+async def get_context(payload: Payload = None) -> str:
+    text = context(payload.query)
     return text
 
 
